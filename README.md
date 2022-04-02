@@ -15,7 +15,7 @@ The three already existing packages that are used here are:
 ## Dependencies
    evt package will be downloaded with ExtremeLy package itself, threshmodeling is not required as it requires R environment 
    to run its functionalities. Those R dependencies have been removed in ExtremeLy. We still need to install skextremes before we can use ExtremeLy. 
-   Scikit-extremes (skexremes) also has a dependency called lmoments3 which needs to be installed. These two libraries can be installed this way:
+   Scikit-extremes (skextremes) also has a dependency called lmoments3 which needs to be installed. These two libraries can be installed this way:
       
       pip install git+https://github.com/OpenHydrology/lmoments3.git
 
