@@ -25,6 +25,9 @@ The three already existing packages that are used here are:
 
       pip install -e .
  
- Now we are good to go and use ExtremeLy :)
+ Now we are good to go and install ExtremeLy :)
+ 
+ ## Installation
+     pip install ExtremeLy
  
  ### Please refer to this [notebook](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/Examples.ipynb) for examples.
