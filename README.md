@@ -26,3 +26,5 @@ The three already existing packages that are used here are:
       pip install -e .
  
  Now we are good to go and use ExtremeLy :)
+ 
+ #### Please refer to this [notebook] () for examples
