@@ -9,7 +9,6 @@ are replaced with python implementation. The three already existing packages tha
    1. [scikit-extremes](https://scikit-extremes.readthedocs.io/en/latest/)
    2. [thresholdmodeling](https://github.com/iagolemos1/thresholdmodeling)
    3. [evt](https://pypi.org/project/evt/#description)
-
-    
-   <img src="https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png">
+   
+![image](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png)
   
