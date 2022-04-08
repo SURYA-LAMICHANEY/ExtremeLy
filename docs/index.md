@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
 <head>
 <p>ExtremeLy is a python package for Extreme Value Analysis. It was found that there are not many packages
