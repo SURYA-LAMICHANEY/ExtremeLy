@@ -32,7 +32,8 @@ are replaced with python implementation. The three already existing packages tha
 2. _def gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
 
     GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is parameterized by scale, shape and location parameters.
-    ###### Parameters
+    
+    #### Parameters
 
     _sample_ : pandas dataframe
         maximas obtained from Block Maxima method
@@ -46,7 +47,7 @@ are replaced with python implementation. The three already existing packages tha
     _ci_method_ : string
         Method used for Confidence Interval like Delta or Bootstrap. Default is Delta.
 
-   ###### Returns
+   #### Returns
 
     model : Object
         Object containing the information about GEV fit. 
