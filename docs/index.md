@@ -13,18 +13,19 @@ are replaced with python implementation. The three already existing packages tha
   
 
 ## Functions
-1.  def getBM(sample, period)
+1.  _def getBM(sample, period)_
 
     In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
-    Parameters
-
+    
+    _Parameters_
+    
     sample : pandas dataframe
         The whole dataset
     period : string
         The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
-    Returns
-
+    _Returns_
+    
     maxima_reset : pandas dataframe
         Maxima values obtained 
   
