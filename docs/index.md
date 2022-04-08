@@ -29,3 +29,24 @@ are replaced with python implementation. The three already existing packages tha
     maxima_reset : pandas dataframe
         Maxima values obtained 
   
+2. _def gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
+
+    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is parameterized by scale, shape and location parameters.
+    ###### Parameters
+
+    _sample_ : pandas dataframe
+        maximas obtained from Block Maxima method
+        
+    _fit_method_ : string
+        Estimation method like Maximum Likelihood Estimation or Method of Moments. Default is MLE.
+        
+    _ci_ : Float
+        Confidence interval. Default is 0.
+        
+    _ci_method_ : string
+        Method used for Confidence Interval like Delta or Bootstrap. Default is Delta.
+
+   ###### Returns
+
+    model : Object
+        Object containing the information about GEV fit. 
