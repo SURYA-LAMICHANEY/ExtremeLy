@@ -1,3 +1,4 @@
+# ExtremeLy
 ExtremeLy is a python package for Extreme Value Analysis. It was found that there are not many packages
 for EVA in python. Among existing packages some of them were incomplete, some of them were internally using R
 packages and some had only basic implementations without any plots for model assessment. So ExtremeLy brings all
