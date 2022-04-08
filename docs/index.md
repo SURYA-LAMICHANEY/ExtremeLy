@@ -12,3 +12,4 @@ are replaced with python implementation. The three already existing packages tha
 
     
     ![alt text](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png?raw=true)
+    ![Screenshot](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png)
