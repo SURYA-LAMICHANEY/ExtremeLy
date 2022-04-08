@@ -1,15 +1,14 @@
-<html lang="en">
-<head>
-<p>ExtremeLy is a python package for Extreme Value Analysis. It was found that there are not many packages
+ExtremeLy is a python package for Extreme Value Analysis. It was found that there are not many packages
 for EVA in python. Among existing packages some of them were incomplete, some of them were internally using R
 packages and some had only basic implementations without any plots for model assessment. So ExtremeLy brings all
 those packages together, removes R dependencies and provides most of the fucntionalities for EVA in python
 without being dependent on R packages. Some fucntionalities from the already existing packages have been used
 as they are, some have been modified to accomodate additional requirements and for some just the R dependencies
 are replaced with python implementation. The three already existing packages that are used here are:
-1. scikit-extremes (skextremes) - <a href="https://scikit-extremes.readthedocs.io/en/latest/">https://scikit-extremes.readthedocs.io/en/latest/</a>
-2. thresholdmodeling - <a href="https://github.com/iagolemos1/thresholdmodeling">https://github.com/iagolemos1/thresholdmodeling</a>
-3. evt - <a href="https://pypi.org/project/evt/#description">https://pypi.org/project/evt/#description</a></p>
+
+   1. scikit-extremes [skextremes](https://scikit-extremes.readthedocs.io/en/latest/)
+   2. [thresholdmodeling](https://github.com/iagolemos1/thresholdmodeling)
+   3. [evt](https://pypi.org/project/evt/#description)
 <details class="source">
 <summary>
 <span>Expand source code</span>
