@@ -11,5 +11,5 @@ are replaced with python implementation. The three already existing packages tha
    3. [evt](https://pypi.org/project/evt/#description)
 
     
-    ![alt text](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png?raw=true)
-    ![Screenshot](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png)
+   ![alt text](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/blockMaxima.png)
+  
