@@ -10,5 +10,5 @@ are replaced with python implementation. The three already existing packages tha
    2. [thresholdmodeling](https://github.com/iagolemos1/thresholdmodeling)
    3. [evt](https://pypi.org/project/evt/#description)
    
-![image](/images/blockMaxima.png)
+![image](/assets/blockMaxima.png)
   
