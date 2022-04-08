@@ -1,1 +1,1 @@
-## This is documentation page for ExtremeLy
+## ExtremeLy - A python package for Extreme Value Analysis
