@@ -28,6 +28,6 @@ The three already existing packages that are used here are:
  Now we are good to go and install ExtremeLy :)
  
  ## Installation
-     pip install ExtremeLy==2.2.0
+     pip install ExtremeLy
  
  ### Please refer to this [notebook](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/Examples.ipynb) for examples.
