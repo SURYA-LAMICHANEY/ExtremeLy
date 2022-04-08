@@ -11,5 +11,5 @@ are replaced with python implementation. The three already existing packages tha
    3. [evt](https://pypi.org/project/evt/#description)
   
 
-![Block Maxima Image]({{ BASE_PATH }}/assets/blockMaxima.png)
+![Block Maxima Image]({{ ExtremeLy }}/assets/blockMaxima.png)
   
