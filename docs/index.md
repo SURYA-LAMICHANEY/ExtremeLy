@@ -19,43 +19,43 @@ There are basically two approaches to Extreme Value Analysis:
 
 
 ## Functions
-1.  _getBM(sample, period)_
+#### 1.  _getBM(sample, period)_
 
-       In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
+   In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
     
-       #### Parameters
+   ##### Parameters
     
-       _sample_ : pandas dataframe
-                The whole dataset
-       _period_: string
-                The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
+   _sample_ : pandas dataframe
+              The whole dataset
+   _period_: string
+             The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
-       #### Returns
+   ##### Returns
     
-       _maxima_reset_ : pandas dataframe
-                      Maxima values obtained 
+   _maxima_reset_ : pandas dataframe
+                    Maxima values obtained 
   
-2. _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
+#### 2. _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
 
-      GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
+   GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
     
-    #### Parameters
+   ##### Parameters
 
-    _sample_ : pandas dataframe
-        maximas obtained from Block Maxima method
+   _sample_ : pandas dataframe
+              maximas obtained from Block Maxima method
         
-    _fit_method_ : string
-        Estimation method like Maximum Likelihood Estimation or Method of Moments. Default is MLE.
+   _fit_method_ : string
+                  Estimation method like Maximum Likelihood Estimation or Method of Moments. Default is MLE.
         
-    _ci_ : Float
-        Confidence interval. Default is 0.
+   _ci_ : Float
+          Confidence interval. Default is 0.
         
-    _ci_method_ : string
-        Method used for Confidence Interval like Delta or Bootstrap. Default is Delta.
+   _ci_method_ : string
+                 Method used for Confidence Interval like Delta or Bootstrap. Default is Delta.
 
-   #### Returns
+   ##### Returns
 
-    model : Object
-        Object containing the information about GEV fit. 
+   model : Object
+           Object containing the information about GEV fit. 
         
 ![Screenshot](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
