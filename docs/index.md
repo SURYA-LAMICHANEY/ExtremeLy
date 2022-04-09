@@ -5,23 +5,22 @@
     1. [getBM](#getBM)
     2. [gevFit](#gevFit)
     3. [gevParams](#gevParams)
-    4. 
-3. [Python notebook with examples](#notebook)
+    4. [gevSummary](#gevSummary)
+    5. [gevVar](#gevVaR)
+    6. [MRL](#MRL)
+    7. [getPOT](#getPOT)
+    8. [gpdfit](#gpdfit)
+    9. [gpdparams](#gpdparams)
+    10. [gpdpdf](#gpdpdf)
+    11. [gpdcdf](#gpdfcdf)
+    12. [gpdqqplot](#gpdqqplot)
+    13. [gpdppplot](#gpdppplot)
+    14. [survival_function](#survival_function)
+4. [Python notebook with examples](#notebook)
 
-         This is how codes should appear on the page:)
+         
 
-## This is the introduction <a name="introduction"></a>
-Some introduction text, formatted in heading 2 style
-
-## Some paragraph <a name="paragraph1"></a>
-The first paragraph text
-
-### Sub paragraph <a name="subparagraph1"></a>
-This is a sub paragraph, formatted in heading 3 style
-
-## Another paragraph <a name="paragraph2"></a>
-The second paragraph text
-# ExtremeLy
+## Introduction <a name="introduction"></a>
 ExtremeLy is a python package for Extreme Value Analysis. It was found that there are not many packages
 for EVA in python. Among existing packages some of them were incomplete, some of them were internally using R
 packages and some had only basic implementations without any plots for model assessment. So ExtremeLy brings all
