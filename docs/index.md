@@ -20,6 +20,7 @@
      14. [survival_function](#survival_function)
    
  4. [Python notebook with examples](#notebook)
+ 5. [Discussion](#discussion)
 
          
 
@@ -38,13 +39,24 @@ are replaced with python implementation. The three already existing packages tha
    3. [evt](https://pypi.org/project/evt/#description)
    
    
+  
+
+## Features <a name="features"></a>
+
 There are basically two approaches to Extreme Value Analysis:
 
    1. Block maxima method + Generalized Extreme Value (GEV) Distribution.
-   2. Peak-over-threshold method + Generalized Pareto Distribution (GPD).  
+   2. Peak-over-threshold method + Generalized Pareto Distribution (GPD).
+   
+ExtremeLy provides all the necessary functionalities for performing Extreme Value Analysis. You can carry out the following tasks:
+
+   1. Finding extreme values from the data using methods like Block Maxima or Peaks-Over-Threshold.
+   2. Fitting the extracted extreme values to the continuous distributions like Generalized Extreme Value (GEV) Distributions or Generalized Pareto Distribution (GPD).
+   3. Using visual plots for extreme values, results and goodness-of-fit statistics of the fitted model.
+   4. Estimating the extreme values of given probaility and corresponding confidence interval.
 
 
-## Functions
+## Functions <a name="functions"></a>
 ### 1.  _getBM(sample, period)_
 
    In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
