@@ -1,6 +1,8 @@
 # Table of contents
 #### 1. [Introduction](#introduction)
+
 #### 2. [Features](#features)
+
 #### 3. [Functions](#functions)
    1. [getBM](#getBM)
    2. [gevFit](#gevFit)
@@ -16,6 +18,7 @@
    12. [gpdqqplot](#gpdqqplot)
    13. [gpdppplot](#gpdppplot)
    14. [survival_function](#survival_function)
+   
 #### 4. [Python notebook with examples](#notebook)
 
          
