@@ -63,10 +63,10 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
     
 ##### Parameters
     
-   _sample_ : pandas dataframe
+   _sample_ : pandas dataframe <br/>
               The whole dataset
             
-   _period_: string
+   _period_: string <br/>
              The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
 ##### Returns
