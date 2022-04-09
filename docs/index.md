@@ -61,14 +61,14 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 
    In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
     
-   #### Parameters
+#### Parameters
     
    _sample_ : pandas dataframe
               The whole dataset
    _period_: string
              The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
-   #### Returns
+#### Returns
     
    _maxima_reset_ : pandas dataframe
                     Maxima values obtained 
@@ -77,7 +77,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 
    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
     
-   #### Parameters
+#### Parameters
 
    _sample_ : pandas dataframe
               maximas obtained from Block Maxima method
@@ -91,7 +91,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    _ci_method_ : string
                  Method used for Confidence Interval like Delta or Bootstrap. Default is Delta.
 
-   #### Returns
+#### Returns
 
    model : Object
            Object containing the information about GEV fit. 
