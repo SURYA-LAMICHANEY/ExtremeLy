@@ -1,25 +1,25 @@
 # Table of contents
-#### 1. [Introduction](#introduction)
+ 1. [Introduction](#introduction)
 
-#### 2. [Features](#features)
+ 2. [Features](#features)
 
-#### 3. [Functions](#functions)
-   1. [getBM](#getBM)
-   2. [gevFit](#gevFit)
-   3. [gevParams](#gevParams)
-   4. [gevSummary](#gevSummary)
-   5. [gevVar](#gevVaR)
-   6. [MRL](#MRL)
-   7. [getPOT](#getPOT)
-   8. [gpdfit](#gpdfit)
-   9. [gpdparams](#gpdparams)
-   10. [gpdpdf](#gpdpdf)
-   11. [gpdcdf](#gpdfcdf)
-   12. [gpdqqplot](#gpdqqplot)
-   13. [gpdppplot](#gpdppplot)
-   14. [survival_function](#survival_function)
+ 3. [Functions](#functions)
+     1. [getBM](#getBM)
+     2. [gevFit](#gevFit)
+     3. [gevParams](#gevParams)
+     4. [gevSummary](#gevSummary)
+     5. [gevVar](#gevVaR)
+     6. [MRL](#MRL)
+     7. [getPOT](#getPOT)
+     8. [gpdfit](#gpdfit)
+     9. [gpdparams](#gpdparams)
+     10. [gpdpdf](#gpdpdf)
+     11. [gpdcdf](#gpdfcdf)
+     12. [gpdqqplot](#gpdqqplot)
+     13. [gpdppplot](#gpdppplot)
+     14. [survival_function](#survival_function)
    
-#### 4. [Python notebook with examples](#notebook)
+ 4. [Python notebook with examples](#notebook)
 
          
 
