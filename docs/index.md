@@ -53,3 +53,4 @@ are replaced with python implementation. The three already existing packages tha
         Object containing the information about GEV fit. 
         
 <img src="{{ "/assets/blockMaxima.png" | prepend: site.baseurl | prepend: site.url}}" alt="Block Maxima" />
+<img src="{{site.baseurl | prepend: site.url}}assets/blockMaxima.png" alt="Untitled" />
