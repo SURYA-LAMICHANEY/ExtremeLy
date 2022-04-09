@@ -77,7 +77,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
 
-#### 2. _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
+### 2.  _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
 
    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
     
