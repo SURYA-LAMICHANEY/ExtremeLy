@@ -53,7 +53,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    1. Finding extreme values from the data using methods like Block Maxima or Peaks-Over-Threshold.
    2. Fitting the extracted extreme values to the continuous distributions like Generalized Extreme Value (GEV) Distributions or Generalized Pareto Distribution (GPD).
    3. Using visual plots for extreme values, results and goodness-of-fit statistics of the fitted model.
-   4. Estimating the extreme values of given probaility and corresponding confidence interval.
+   4. Estimating the extreme values of given probability and corresponding confidence interval.
 
 
 ## Functions <a name="functions"></a>
@@ -96,7 +96,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    model : Object
            Object containing the information about GEV fit. 
         
-![Screenshot](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
+![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
 
 
