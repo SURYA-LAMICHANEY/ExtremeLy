@@ -66,12 +66,12 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    _sample_ : pandas dataframe <br/>
               The whole dataset
             
-   _period_: string <br/>
+   _period_ : string <br/>
              The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
 ##### Returns
     
-   _maxima_reset_ : pandas dataframe
+   _maxima_reset_ : pandas dataframe <br/>
                     Maxima values obtained 
 
 ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
@@ -83,21 +83,21 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
     
 ##### Parameters
 
-   _sample_ : pandas dataframe
+   _sample_ : pandas dataframe <br/>
               maximas obtained from Block Maxima method
         
-   _fit_method_ : string
+   _fit_method_ : string <br/>
                   Estimation method like Maximum Likelihood Estimation or Method of Moments. Default is MLE.
         
-   _ci_ : Float
+   _ci_ : float <br/>
           Confidence interval. Default is 0.
         
-   _ci_method_ : string
+   _ci_method_ : string <br/>
                  Method used for Confidence Interval like Delta or Bootstrap. Default is Delta.
 
 ##### Returns
 
-   model : Object
+   model : object <br/>
            Object containing the information about GEV fit. 
         
 
