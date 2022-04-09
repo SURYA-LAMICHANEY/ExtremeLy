@@ -1,2 +1,3 @@
 theme: jekyll-theme-architect
-baseurl : /ExtremeLy
+url: 'https://your-github-username.github.io/'
+baseurl : 'ExtremeLy/'
