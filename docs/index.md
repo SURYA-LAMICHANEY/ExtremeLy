@@ -73,7 +73,10 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
     
    _maxima_reset_ : pandas dataframe
                     Maxima values obtained 
-  
+
+![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
+
+
 #### 2. _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
 
    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
@@ -97,7 +100,6 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    model : Object
            Object containing the information about GEV fit. 
         
-![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
 
 
