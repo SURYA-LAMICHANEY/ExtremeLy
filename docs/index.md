@@ -51,3 +51,5 @@ are replaced with python implementation. The three already existing packages tha
 
     model : Object
         Object containing the information about GEV fit. 
+        
+ <img src="{{ site.baseurl }}/assets/blockMaxima.png">
