@@ -10,28 +10,34 @@ are replaced with python implementation. The three already existing packages tha
    1. [scikit-extremes](https://scikit-extremes.readthedocs.io/en/latest/)
    2. [thresholdmodeling](https://github.com/iagolemos1/thresholdmodeling)
    3. [evt](https://pypi.org/project/evt/#description)
-  
+   
+   
+There are basically two approaches to Extreme Value Analysis:
+
+   1. Block maxima method + Generalized Extreme Value (GEV) Distribution.
+   2. Peak-over-threshold method + Generalized Pareto Distribution (GPD).  
+
 
 ## Functions
-1.  _def getBM(sample, period)_
+1.  _getBM(sample, period)_
 
-    In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
+       In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
     
-    _Parameters_
+       #### Parameters
     
-    sample : pandas dataframe
-        The whole dataset
-    period : string
-        The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
+       _sample_ : pandas dataframe
+                The whole dataset
+       _period_: string
+                The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
-    _Returns_
+       #### Returns
     
-    maxima_reset : pandas dataframe
-        Maxima values obtained 
+       _maxima_reset_ : pandas dataframe
+                      Maxima values obtained 
   
-2. _def gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
+2. _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
 
-    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is parameterized by scale, shape and location parameters.
+      GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
     
     #### Parameters
 
