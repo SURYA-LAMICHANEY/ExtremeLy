@@ -77,7 +77,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
 
-### 2.  _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_ <a name="gevfit"></a>
+### 2.  _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_ <a name="gevFit"></a>
 
    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
     
@@ -101,7 +101,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
            Object containing the information about GEV fit. 
         
 
- ### 3. _gevparams(model)_ <a name="gevparams"></a>
+ ### 3. _gevparams(model)_ <a name="gevParams"></a>
 
    Accesing estimated distribution parameters from the GEV fit.
    
@@ -116,7 +116,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    Returns estimated distribution parameters. 
   
   
-### 4. _gevsummary(model)_ <a name="gevsummary"></a>
+### 4. _gevsummary(model)_ <a name="gevSummary"></a>
 
    Plotting plots like QQplot, PPplot, Return Level plot and density plot for the GEV model.
 ##### Parameters
