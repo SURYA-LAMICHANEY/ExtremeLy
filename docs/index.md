@@ -101,7 +101,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
            Object containing the information about GEV fit. 
         
 
- ### 3. _gevparams(model)_ <a name="gevParams"></a>
+### 3. _gevparams(model)_ <a name="gevParams"></a>
 
    Accesing estimated distribution parameters from the GEV fit.
    
