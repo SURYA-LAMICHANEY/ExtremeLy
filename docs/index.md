@@ -57,7 +57,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 
 
 ## Functions <a name="functions"></a>
-### 1.  _getBM(sample, period)_
+### 1.  _getBM(sample, period)_ <a name="getBM"></a>
 
    In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
     
@@ -77,7 +77,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
 
-### 2.  _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_
+### 2.  _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_ <a name="gevfit"></a>
 
    GEV is a limit distribution of properly normalized maxima of sequence of independent and identically distributed random variables. It is     parameterized by scale, shape and location parameters.
     
@@ -101,7 +101,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
            Object containing the information about GEV fit. 
         
 
- ### 3. _gevparams(model)_
+ ### 3. _gevparams(model)_ <a name="gevparams"></a>
 
    Accesing estimated distribution parameters from the GEV fit.
    
@@ -116,7 +116,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    Returns estimated distribution parameters. 
   
   
-### 4. _gevsummary(model)_
+### 4. _gevsummary(model)_ <a name="gevsummary"></a>
 
    Plotting plots like QQplot, PPplot, Return Level plot and density plot for the GEV model.
 ##### Parameters
@@ -129,7 +129,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    _None_
 
 
-### 5. _getPOT(sample, threshold)_
+### 5. _getPOT(sample, threshold)_ <a name="getPOT"></a>
 
    In Peak-Over-Threshold method the values greater than a given threshold are taken as extreme values.
 ##### Parameters
@@ -142,5 +142,5 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 
 ##### Returns
 
-  _ exce_ : pandas dataframe <br/>
+ _exce_ : pandas dataframe <br/>
             Excess values obtained. 
