@@ -101,6 +101,46 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
            Object containing the information about GEV fit. 
         
 
+ ### 3. _gevparams(model)_
+
+   Accesing estimated distribution parameters from the GEV fit.
+   
+##### Parameters
+
+   _model_ : object <br/>
+           Object containing the information about GEV fit.
+
+##### Returns
+
+   _OrderedDict_ <br/>
+   Returns estimated distribution parameters. 
+  
+  
+### 4. _gevsummary(model)_
+
+   Plotting plots like QQplot, PPplot, Return Level plot and density plot for the GEV model.
+##### Parameters
+
+   _model_ : object <br/>
+             Object containing the information about GEV fit.
+
+##### Returns
+
+   _None_
 
 
+### 5. _getPOT(sample, threshold)_
 
+   In Peak-Over-Threshold method the values greater than a given threshold are taken as extreme values.
+##### Parameters
+
+   _sample_ : pandas dataframe <br/>
+              The whole Dataset
+              
+   _threshold_ : integer <br/>
+                 An integer value above which the values are taken as extreme values.
+
+##### Returns
+
+  _ exce_ : pandas dataframe <br/>
+            Excess values obtained. 
