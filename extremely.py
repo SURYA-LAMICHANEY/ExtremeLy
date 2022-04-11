@@ -170,7 +170,7 @@ def MRL(sample, alpha=0.05):
 
     Returns
     -------
-    Mean Residual Life Plot.
+    None
 
     """
     
