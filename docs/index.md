@@ -75,7 +75,9 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    _maxima_reset_ : pandas dataframe <br/>
                     Maxima values obtained 
 #### Example
-      maxima=ely.getBM(sample=data,period="Y") # Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
+
+      # Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
+      maxima=ely.getBM(sample=data,period="Y") 
       maxima
 
 ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
