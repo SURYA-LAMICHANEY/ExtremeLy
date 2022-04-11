@@ -40,8 +40,6 @@ are replaced with python implementation. The three already existing packages tha
    3. [evt](https://pypi.org/project/evt/#description)
    
    
-  
-
 ## Features <a name="features"></a>
 
 There are basically two approaches to Extreme Value Analysis:
@@ -60,7 +58,7 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 ## Generalized Extreme Value (GEV) Distribution <a name="gev"></a>
 
 Generalized Extreme Value (GEV) Distribution is a limit distribution of properly normalized maxima of sequence of independent and identically
-distributed random variables. It is specified by three parameters : location, shape and scale. Visit [Wikipedia](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution) page for more information.
+distributed random variables. It is specified by three parameters : location, shape and scale. Visit [Wikipedia](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution) page for more information.<br/>
 ### 1.  _getBM(sample, period)_ <a name="getBM"></a>
 
    In Block Maxima method we divide the whole dataset into blocks and select the largest value in each block as an extreme value.
@@ -76,13 +74,12 @@ distributed random variables. It is specified by three parameters : location, sh
 ##### Returns
     
    _maxima_reset_ : pandas dataframe <br/>
- 
-<details>
-  <summary>Click to expand!</summary>
- 
-    ```python
- 
-       def getBM(sample,period): 
+
+<details><summary>Expand for source code</summary>
+<p>
+
+```python
+   def getBM(sample,period): 
  
        #Obtain the maximas   
         colname=list(sample)   
@@ -103,10 +100,12 @@ distributed random variables. It is specified by three parameters : location, sh
         plt.show()  
  
         #Return the maximas   
-        return maxima_reset    
-     ```
+        return maxima_reset 
+```
+
+</p>
 </details>
- 
+
 #### Example
    
 ```python
