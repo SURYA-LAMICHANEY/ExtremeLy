@@ -82,6 +82,19 @@ distributed random variables. It is specified by three parameters : location, sh
       # Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
       maxima=ely.getBM(sample=data,period="Y") 
       maxima
+      
+       	Date 	Loss
+    0 	1980-12-31 	263.250366
+    1 	1981-12-31 	56.225426
+    2 	1982-12-31 	65.707491
+    3 	1983-12-30 	13.348165
+    4 	1984-12-31 	19.162304
+    5 	1985-12-29 	57.410636
+    6 	1986-12-30 	29.026037
+    7 	1987-12-31 	32.467532
+    8 	1988-12-26 	47.019521
+    9 	1989-12-31 	152.413209
+    10 	1990-12-31 	144.657591
 
 ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
