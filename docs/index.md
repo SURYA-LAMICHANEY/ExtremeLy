@@ -8,7 +8,6 @@
      2. [gevFit](#gevFit)
      3. [gevParams](#gevParams)
      4. [gevSummary](#gevSummary)
-     5. [gevVar](#gevVaR)
      
  4. [Generalized Pareto Distribution (GPD)](#gpd)
      1. [MRL](#MRL)
@@ -16,7 +15,7 @@
      3. [gpdfit](#gpdfit)
      4. [gpdparams](#gpdparams)
      5. [gpdpdf](#gpdpdf)
-     6. [gpdcdf](#gpdfcdf)
+     6. [gpdcdf](#gpdcdf)
      7. [gpdqqplot](#gpdqqplot)
      8. [gpdppplot](#gpdppplot)
      9. [survival_function](#survival_function)
@@ -130,8 +129,25 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 
    _None_
 
+## Generalized Pareto Distribution (GPD) <a name="gpd"></a>
 
-### 5. _getPOT(sample, threshold)_ <a name="getPOT"></a>
+### 1. _MRL(sample, alpha=0.05)_  <a name="MRL"></a>
+
+   Mean Residual Life plot takes mean of excess values above a threshold minus threshold and plots it against that threshold value. If the plot is linear that is ok but if the plot starts loosing stability then choose that threshold value. <br/>
+##### Parameters
+
+   _sample_ : pandas dataframe <br/>
+              the whole dataset
+              
+   _alpha_ : float
+            a number giving 1-alpha confidence levels to use. Default value is 0.05.
+
+##### Returns
+
+   None
+   
+   
+### 2. _getPOT(sample, threshold)_ <a name="getPOT"></a>
 
    In Peak-Over-Threshold method the values greater than a given threshold are taken as extreme values.
 ##### Parameters
@@ -145,4 +161,117 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
 ##### Returns
 
  _exce_ : pandas dataframe <br/>
-            Excess values obtained. 
+          Excess values obtained. 
+
+### 3. _gpdfit(sample, threshold)_ <a name="gpdfit"></a>
+
+   GPD is a family of continous probability distributions and is often used to model the tails of another distribution. It is specified by two parameters - Shape and scale parameters. <br/>
+##### Parameters
+
+   _sample_ : pandas dataframe br/>
+              The whole Dataset
+        
+   _threshold_ : integer
+                 An integer value above which the values are taken as extreme values.
+
+##### Returns
+
+   Estimated distribution parametrs of GPD fit, sample excess values and value above the threshold.
+        
+### 4. _gpdparams(fit)_ <a name="gpdparams"></a>
+
+   Getting estimated distribution parameters for GPD fit. <br/>
+##### Parameters
+
+   _fit_ : object <br/>
+           Object containing information about GPD fit.
+
+##### Returns
+
+   None
+   
+### 5. _gpdpdf(sample, threshold, bin_method, alpha)_ <a name="gpdpdf"></a>
+
+   Probability density plots are used to understand data distribution for a continuous variable and we want to know the likelihood (or probability) of obtaining a range of values that the continuous variable can assume. <br/>
+##### Parameters
+
+   _sample_ : pandas dataframe <br/>
+        The whole Dataset
+        
+   _threshold_ : integer <br/>
+        An integer value above which the values are taken as extreme values.
+        
+   _bin_method_ : string <br/>
+        Binning algorithm, specified as one of the following - auto, scott, fd, sturges, integers and sqrt.
+        
+   _alpha_ : float <br/>
+        a number giving 1-alpha confidence levels to use. Default value is 0.05.
+
+##### Returns
+
+   None
+   
+### 6. _gpdcdf(sample, threshold, alpha)_ <a name="gpdcdf"></a>
+
+   The cumulative distribution function of a real-valued random variable X, or just distribution function of X, evaluated at x, is the probability that X will take a value less than or equal to x. <br/>
+##### Parameters
+
+   _sample_ : pandas dataframe <br/>
+              The whole Dataset
+        
+   _threshold_ : integer <br/>
+                 An integer value above which the values are taken as extreme values.
+
+   _alpha_ : float <br/>
+             a number giving 1-alpha confidence levels to use. Default value is 0.05.
+   
+##### Returns
+
+   None
+   
+### 7. _gpdqqplot(mle)_ <a name="gpdqqplot"></a>
+
+   QQplot is a graphical technique for determining if two datasets come from populations with a common distribution. A 45 degree reference line is plotted, if the two sets come from populations with the same distribution, the points should fall approximately along this reference line. <br/>
+##### Parameters
+
+   _mle_ : object <br/>
+           MLE estimator object from evt library.
+
+##### Returns
+
+   None
+   
+### 8. _gpdppplot(sample, threshold, alpha)_ <a name="gpdppplot"></a>
+
+   PP-plot is used for assessing how closely two datasets agree. It plots the two cumulative distribution functions against each other.<br/>
+##### Parameters
+
+   _sample_ : pandas dataframe<br/>
+              The whole Dataset
+              
+   _threshold_ : integer <br/>
+                 An integer value above which the values are taken as extreme values.
+
+   alpha : float <br/>
+           a number giving 1-alpha confidence levels to use. Default value is 0.05.
+           
+##### Returns
+
+   None
+### 9. _survival_function(sample, threshold, alpha)_ <a name="survival_function"></a>
+
+   The survival function is a function that gives the probability that the object of interest will survive past a certain time. <br/>
+##### Parameters
+
+   _sample_ : pandas dataframe <br/>
+              The whole Dataset
+        
+   _threshold_ : integer <br/>
+                 An integer value above which the values are taken as extreme values.
+
+   _alpha_ : float <br/>
+             a number giving 1-alpha confidence levels to use. Default value is 0.05.
+   
+##### Returns
+
+None
