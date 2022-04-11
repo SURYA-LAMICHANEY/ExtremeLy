@@ -328,6 +328,52 @@ ely.MRL(sample=data,alpha=0.05)
  _exce_ : pandas dataframe <br/>
           Excess values obtained. 
 
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+      def getPOT(sample,threshold):
+          colnames=list(sample)
+          exce=sample[sample.iloc[:,1].gt(threshold)]
+    
+          #Plotting the excess values obtained using POT method.
+          ax = sample.iloc[:,1].reset_index().plot(kind='scatter', x='index', y=colnames[1],
+                                           color='Red', label='Below Threshold')
+          exce.reset_index().plot(kind='scatter', x='index', y=colnames[1],
+                                          color='Blue', label='Above threshold', ax=ax)
+          return exce
+{% endhighlight %}
+</details>
+
+#### Example 
+
+ ```python
+#Getting large claims using POT method using threshold value as 30.
+pot=ely.getPOT(sample=data,threshold=30)
+pot
+``` 
+
+#### Output
+          	
+    index 	  Date         	Loss
+      82  	1980-07-15 	263.250366
+      178   1981-02-10 	34.141547
+      232 	1981-05-29 	56.225426
+      330 	1981-12-21 	50.065531
+      478 	1982-10-24 	65.707491
+      887 	1985-03-04 	46.500000
+      972 	1985-08-23 	57.410636
+      1388 	1987-06-05 	32.467532
+      1549 	1988-03-25 	38.154392
+      1641 	1988-08-12 	47.019521
+      1710 	1988-12-17 	31.055901
+      1740 	1989-02-14 	42.091448
+      1856 	1989-08-04 	152.413209
+      1909 	1989-10-22 	32.387807
+      2121 	1990-10-08 	144.657591
+      
+![Peak-over-threshold](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/pot.png)
+
+
 ### 3. _gpdfit(sample, threshold)_ <a name="gpdfit"></a>
 
    GPD is a family of continous probability distributions and is often used to model the tails of another distribution. It is specified by two parameters - Shape and scale parameters. <br/>
