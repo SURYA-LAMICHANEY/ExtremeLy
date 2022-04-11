@@ -238,6 +238,8 @@ ely.gevsummary(model=fit)
 
 ## Generalized Pareto Distribution (GPD) <a name="gpd"></a>
 
+Generalized Pareto Distribution (GPD) is a family of of continuos probability distributions and is often used to model the tails of another distribution. It is sometimes specified by three parameters : location, shape and scale, but it can also be specified by only shape and scale parameters. Visit 
+[Wikipedia](https://en.wikipedia.org/wiki/Generalized_Pareto_distribution) page for more information.
 ### 1. _MRL(sample, alpha=0.05)_  <a name="MRL"></a>
 
    Mean Residual Life plot takes mean of excess values above a threshold minus threshold and plots it against that threshold value. If the plot is linear that is ok but if the plot starts loosing stability then choose that threshold value. <br/>
