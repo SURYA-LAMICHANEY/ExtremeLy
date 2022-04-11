@@ -533,7 +533,59 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
 ##### Returns
 
    None
-   
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+    #plot gpd cdf with empirical points
+    def gpdcdf(sample, threshold, alpha): 
+        [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold)
+        n = len(sample_over_thresh)
+        y = np.arange(1,n+1)/n 
+
+        i_initial = 0
+        n = len(sample)
+        for i in range(0,n):
+            if sample[i] > threshold: 
+                i_initial = i 
+                break
+    
+        #Computing confidence interval with the Dvoretzky–Kiefer–Wolfowitz method based on the empirical points
+        F1 = []
+        F2 = []
+        for i in range(i_initial,len(sample)):
+            e = (((mt.log(2/alpha))/(2*len(sample_over_thresh)))**0.5)  
+            F1.append(y[i-i_initial] - e)
+            F2.append(y[i-i_initial] + e)  
+
+         x_points = np.arange(0, max(sample), 0.001) 
+         cdf = stats.genpareto.cdf(x_points, shape, loc=threshold, scale=scale) #getting theoretical cdf
+    
+        #Plotting cdf 
+        plt.figure(figsize=(7,7))
+        plt.plot(x_points, cdf, color = 'black', label='Theoretical CDF')
+        plt.xlabel('Data')
+        plt.ylabel('CDF')
+        plt.title('Data Comulative Distribution Function')
+        plt.scatter(sorted(sample_over_thresh), y, label='Empirical CDF')
+        plt.plot(sorted(sample_over_thresh), F1, linestyle='--', color='red', alpha = 0.8, lw = 0.9, label = 'Dvoretzky–Kiefer–Wolfowitz Confidence Bands')
+        plt.plot(sorted(sample_over_thresh), F2, linestyle='--', color='red', alpha = 0.8, lw = 0.9)
+        plt.legend()
+        plt.show()
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Cumulative Density Function plot.
+ely.gpdcdf(sample=data,threshold=10,alpha=0.05)
+```
+
+#### Output
+
+![GPD-CDF](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdcdf.png)
+
+
 ### 7. _gpdqqplot(mle)_ <a name="gpdqqplot"></a>
 
    QQplot is a graphical technique for determining if two datasets come from populations with a common distribution. A 45 degree reference line is plotted, if the two sets come from populations with the same distribution, the points should fall approximately along this reference line. <br/>
@@ -545,7 +597,31 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
 ##### Returns
 
    None
-   
+
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+    #Plot QQplot with empirical points.
+    def gpdqqplot(mle): 
+        fig, ax = plt.subplots()
+        mle.plot_qq_gpd(ax)
+        fig.tight_layout()
+        plt.show()
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Quantile-Quantile plot.
+ely.gpdqqplot(gpdfit[5])
+```
+
+#### Output
+
+![GPD-QQplot](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdqqplot.png)
+
+
 ### 8. _gpdppplot(sample, threshold, alpha)_ <a name="gpdppplot"></a>
 
    PP-plot is used for assessing how closely two datasets agree. It plots the two cumulative distribution functions against each other.<br/>
@@ -563,6 +639,54 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
 ##### Returns
 
    None
+   
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+    #probability-probability plot to diagnostic the model
+    def gpdppplot(sample, threshold, alpha): 
+        [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold) 
+        n = len(sample_over_thresh)
+        y = np.arange(1,n+1)/n  
+        cdf_pp = stats.genpareto.cdf(sample_over_thresh, shape, loc=threshold, scale=scale)
+    
+        #Getting Confidence Intervals using the Dvoretzky–Kiefer–Wolfowitz method
+        i_initial = 0
+        n = len(sample)
+        for i in range(0, n):
+            if sample[i] > threshold + 0.0001:
+                i_initial = i
+                break
+        F1 = []
+        F2 = []
+        for i in range(i_initial,n):
+            e = (((mt.log(2/alpha))/(2*len(sample_over_thresh)))**0.5)  
+            F1.append(y[i-i_initial] - e)
+            F2.append(y[i-i_initial] + e)
+
+        #Plotting PP
+        plt.figure(figsize=(7,7))
+        sns.regplot(y, cdf_pp, ci = None, line_kws={'color':'black', 'label':'Regression Line'})
+        plt.plot(y, F1, linestyle='--', color='red', alpha = 0.5, lw = 0.8, label = 'Dvoretzky–Kiefer–Wolfowitz Confidence Bands')
+        plt.plot(y, F2, linestyle='--', color='red', alpha = 0.5, lw = 0.8)
+        plt.legend()
+        plt.title('P-P Plot')
+        plt.xlabel('Empirical Probability')
+        plt.ylabel('Theoritical Probability')
+        plt.show()
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Probability-Probaility plot.
+ely.gpdppplot(sample=data,threshold=30,alpha=0.5)
+```
+#### Output
+
+![GPD-PPplot](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdppplot.png)
+
 ### 9. _survival_function(sample, threshold, alpha)_ <a name="survival_function"></a>
 
    The survival function is a function that gives the probability that the object of interest will survive past a certain time. <br/>
@@ -580,3 +704,56 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
 ##### Returns
 
 None
+
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+    #Plot the survival function, (1 - cdf)
+    def survival_function(sample, threshold, alpha): 
+        [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold)
+
+        n = len(sample_over_thresh)
+        y_surv = 1 - np.arange(1,n+1)/n
+
+        i_initial = 0
+
+        n = len(sample)
+        for i in range(0, n):
+            if sample[i] > threshold + 0.0001:
+                i_initial = i 
+                break
+        #Computing confidence interval with the Dvoretzky–Kiefer–Wolfowitz
+        F1 = []
+        F2 = []
+        for i in range(i_initial,len(sample)):
+            e =  (((mt.log(2/alpha))/(2*len(sample_over_thresh)))**0.5)  
+            F1.append(y_surv[i-i_initial] - e)
+            F2.append(y_surv[i-i_initial] + e)  
+
+        x_points = np.arange(0, max(sample), 0.001)
+        surv_func = 1 - stats.genpareto.cdf(x_points, shape, loc=threshold, scale=scale)
+
+        #Plotting survival function
+        plt.figure(9)
+        plt.plot(x_points, surv_func, color = 'black', label='Theoretical Survival Function')
+        plt.xlabel('Data')
+        plt.ylabel('Survival Function')
+        plt.title('Data Survival Function Plot')
+        plt.scatter(sorted(sample_over_thresh), y_surv, label='Empirical Survival Function')
+        plt.plot(sorted(sample_over_thresh), F1, linestyle='--', color='red', alpha = 0.8, lw = 0.9, label = 'Dvoretzky–Kiefer–Wolfowitz Confidence Bands')
+        plt.plot(sorted(sample_over_thresh), F2, linestyle='--', color='red', alpha = 0.8, lw = 0.9)
+        plt.legend()
+        plt.show()
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Survival Function
+ely.survival_function(sample=data,threshold=30,alpha=0.05)
+```
+
+#### Output
+
+![GPD-Survival](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdsurvival.png)
