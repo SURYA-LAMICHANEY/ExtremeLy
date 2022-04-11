@@ -80,27 +80,27 @@ distributed random variables. It is specified by three parameters : location, sh
 <details>
 <summary>Expand for source code</summary>
   
-      def getBM(sample,period):   
-        #Obtain the maximas
-        colname=list(sample)
-        sample.iloc[:,0]= pd.to_datetime(sample.iloc[:,0])
-        maxima = sample.resample(period, on=colname[0]).max()
-        maxima_reset=maxima.reset_index(drop=True)
-        series=pd.Series(sample.iloc[:,1])
-        series.index.name=&#34;index&#34;
-        dataset = Dataset(series)
-        N_SAMPLES_PER_BLOCK = round(len(sample)/len(maxima_reset))
-        block_maxima = BlockMaxima(dataset, N_SAMPLES_PER_BLOCK)
+         def getBM(sample,period):   
+            #Obtain the maximas
+            colname=list(sample)
+            sample.iloc[:,0]= pd.to_datetime(sample.iloc[:,0])
+            maxima = sample.resample(period, on=colname[0]).max()
+            maxima_reset=maxima.reset_index(drop=True)
+            series=pd.Series(sample.iloc[:,1])
+            series.index.name=&#34;index&#34;
+            dataset = Dataset(series)
+            N_SAMPLES_PER_BLOCK = round(len(sample)/len(maxima_reset))
+            block_maxima = BlockMaxima(dataset, N_SAMPLES_PER_BLOCK)
     
-       #Plot the maximas
-       fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
-       block_maxima.plot_block_maxima(ax1)
-       block_maxima.plot_block_maxima_boxplot(ax2)
-       fig.tight_layout()
-       plt.show()
+           #Plot the maximas
+           fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+           block_maxima.plot_block_maxima(ax1)
+           block_maxima.plot_block_maxima_boxplot(ax2)
+           fig.tight_layout()
+           plt.show()
     
-     #Return the maximas
-      return maxima_reset
+           #Return the maximas
+           return maxima_reset
 </details>
   
 #### Example
