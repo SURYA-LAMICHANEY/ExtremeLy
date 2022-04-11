@@ -76,29 +76,31 @@ distributed random variables. It is specified by three parameters : location, sh
 ##### Returns
     
    _maxima_reset_ : pandas dataframe <br/>
-                    Maxima values obtained 
-                    
-<span>Expand source code</span>
-<pre><code class="python">def getBM(sample,period):
+ 
+.Expand source code
+[%collapsible]
+====
+This content is revealed when the "Toggle Me" label is clicked.
+def getBM(sample,period):
     &#34;&#34;&#34;
     In Block Maxima method we divide the whole dataset into blocks and select the largest value in each
     block as an extreme value.
 
-    Parameters
+   Parameters
     ----------
     sample : pandas dataframe 
         The whole dataset
     period : string
         The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
 
-    Returns
+   Returns
     -------
     maxima_reset : pandas dataframe
         Maxima values obtained
 
-    &#34;&#34;&#34;
     
-    #Obtain the maximas
+    
+   #Obtain the maximas
     colname=list(sample)
     sample.iloc[:,0]= pd.to_datetime(sample.iloc[:,0])
     maxima = sample.resample(period, on=colname[0]).max()
@@ -109,16 +111,17 @@ distributed random variables. It is specified by three parameters : location, sh
     N_SAMPLES_PER_BLOCK = round(len(sample)/len(maxima_reset))
     block_maxima = BlockMaxima(dataset, N_SAMPLES_PER_BLOCK)
     
-    #Plot the maximas
+   #Plot the maximas
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
     block_maxima.plot_block_maxima(ax1)
     block_maxima.plot_block_maxima_boxplot(ax2)
     fig.tight_layout()
     plt.show()
     
-    #Return the maximas
-    return maxima_reset</code></pre>
-    
+   #Return the maximas
+    return maxima_reset
+ ====
+  
 #### Example
 
       # Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
