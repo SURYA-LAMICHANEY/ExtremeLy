@@ -633,7 +633,7 @@ ely.gpdqqplot(gpdfit[5])
    _threshold_ : integer <br/>
                  An integer value above which the values are taken as extreme values.
 
-   alpha : float <br/>
+   _alpha_ : float <br/>
            a number giving 1-alpha confidence levels to use. Default value is 0.05.
            
 ##### Returns
