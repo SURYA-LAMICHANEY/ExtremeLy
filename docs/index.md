@@ -78,6 +78,7 @@ distributed random variables. It is specified by three parameters : location, sh
  <details><summary> <strong>Expand for source code</strong> </summary>
 {% highlight python %}
  
+    #Block Maxima method for finding large values. 
     def getBM(sample,period): 
  
        #Obtain the maximas   
@@ -185,6 +186,7 @@ fit=ely.gevfit(sample=maxima,fit_method="mle",ci=0,ci_method="delta")
   
 <details><summary> <strong>Expand for source code</strong> </summary>
 {% highlight python %}
+ 
      #Return the estimated parameters
      return model.params
 {% endhighlight %}
@@ -258,6 +260,7 @@ Generalized Pareto Distribution (GPD) is a family of of continuos probability di
 <details><summary> <strong>Expand for source code</strong> </summary>
 {% highlight python %}
  
+     #Mean Residual Life Plot for finding appropriate threshold value.
      def MRL(sample, alpha=0.05):
     
     #Defining the threshold array and its step
@@ -331,6 +334,7 @@ ely.MRL(sample=data,alpha=0.05)
 <details><summary> <strong>Expand for source code</strong> </summary>
 {% highlight python %}
  
+      #Peaks-Over-Threshold method for finding large values.
       def getPOT(sample,threshold):
           colnames=list(sample)
           exce=sample[sample.iloc[:,1].gt(threshold)]
@@ -379,7 +383,7 @@ pot
    GPD is a family of continous probability distributions and is often used to model the tails of another distribution. It is specified by two parameters - Shape and scale parameters. <br/>
 ##### Parameters
 
-   _sample_ : pandas dataframe br/>
+   _sample_ : pandas dataframe <br/>
               The whole Dataset
         
    _threshold_ : integer
@@ -388,6 +392,39 @@ pot
 ##### Returns
 
    Estimated distribution parametrs of GPD fit, sample excess values and value above the threshold.
+   
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+    #Fit the large claims obtained from POT method to Generalized Pareto distribution (GPD).
+    def gpdfit(sample, threshold):
+        sample = np.sort(sample.iloc[:,1])  
+        sample_excess = []
+        sample_over_thresh = []
+        for data in sample:
+            if data > threshold+0.00001:
+                sample_excess.append(data - threshold) 
+                sample_over_thresh.append(data) 
+        series=pd.Series(sample)
+        series.index.name="index"
+        dataset = Dataset(series)
+    
+        #Using PeaksOverThreshold function from evt library.
+        pot = PeaksOverThreshold(dataset, threshold)
+        mle = GPDMLE(pot)
+        shape_estimate, scale_estimate= mle.estimate()
+        shape=getattr(shape_estimate, 'estimate')
+        scale=getattr(scale_estimate, 'estimate') 
+        return(shape, scale,sample, sample_excess, sample_over_thresh,mle)
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Fitting GPD with large claims obtained using POT method.
+gpdfit=ely.gpdfit(sample=data,threshold=30)
+```
         
 ### 4. _gpdparams(fit)_ <a name="gpdparams"></a>
 
@@ -400,7 +437,31 @@ pot
 ##### Returns
 
    None
-   
+
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+    #Get estimated distribution parameters for GPD fit.
+    def gpdparams(fit):
+        shape=fit[0]
+        scale=fit[1]
+        print("Shape:",shape)
+        print("Scale:",scale)
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Getting estimated distribution parameters for GPD fit.
+ely.gpdparams(fit=gpdfit)
+```
+
+#### Output
+
+    Shape: 0.6586260117024005
+    Scale: 19.267021192664032
+    
 ### 5. _gpdpdf(sample, threshold, bin_method, alpha)_ <a name="gpdpdf"></a>
 
    Probability density plots are used to understand data distribution for a continuous variable and we want to know the likelihood (or probability) of obtaining a range of values that the continuous variable can assume. <br/>
@@ -421,7 +482,40 @@ pot
 ##### Returns
 
    None
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+     #get PDF plot with histogram to diagnostic the model
+     def gpdpdf(sample, threshold, bin_method, alpha):
+         [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold) 
+         x_points = np.arange(0, max(sample), 0.001) 
+         pdf = stats.genpareto.pdf(x_points, shape, loc=0, scale=scale) 
+
+         #Plotting PDF
+         plt.figure(figsize=(7,7))
+         plt.xlabel('Data')
+         plt.ylabel('PDF')
+         plt.title('Data Probability Density Function')
+         plt.plot(x_points, pdf, color = 'black', label = 'Theoretical PDF')
+         plt.hist(sample_excess, bins = bin_method, density = True)    
+         plt.legend()
+         plt.show()
    
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Data Probability Density Function plot.
+ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
+```
+
+#### Output
+
+![GPD-PDF](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdpdf.png)
+
+
 ### 6. _gpdcdf(sample, threshold, alpha)_ <a name="gpdcdf"></a>
 
    The cumulative distribution function of a real-valued random variable X, or just distribution function of X, evaluated at x, is the probability that X will take a value less than or equal to x. <br/>
