@@ -216,6 +216,26 @@ params
 
    _None_
 
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+     #Display all the plots together
+     model.plot_summary()
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Summarizing the GEV model with various plots like QQplot, PPplot, 
+#Return Level Plot and Data Probability density plot
+ely.gevsummary(model=fit)
+```
+#### Output
+
+   ![GEVSummary](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/summary.png)
+   
+
 ## Generalized Pareto Distribution (GPD) <a name="gpd"></a>
 
 ### 1. _MRL(sample, alpha=0.05)_  <a name="MRL"></a>
