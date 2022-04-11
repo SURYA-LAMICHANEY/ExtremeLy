@@ -75,7 +75,7 @@ distributed random variables. It is specified by three parameters : location, sh
     
    _maxima_reset_ : pandas dataframe <br/>
 
- <details><summary>__Expand for source code__</summary>
+ <details><summary> <b>Expand for source code</b></summary>
 {% highlight python %}
  
     def getBM(sample,period): 
