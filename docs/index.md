@@ -79,6 +79,7 @@ distributed random variables. It is specified by three parameters : location, sh
  
 <details>
   <summary>Click to expand!</summary>
+ 
     ```python
  
        def getBM(sample,period): 
@@ -107,11 +108,13 @@ distributed random variables. It is specified by three parameters : location, sh
 </details>
  
 #### Example
-      
-      #Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
-      maxima=ely.getBM(sample=data,period="Y") 
-      maxima
-      
+   
+```python
+   #Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
+   maxima=ely.getBM(sample=data,period="Y") 
+   maxima
+```
+
 #### Output      
        	Date 	Loss
     0 	1980-12-31 	263.250366
