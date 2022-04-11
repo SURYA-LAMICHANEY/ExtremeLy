@@ -252,8 +252,64 @@ ely.gevsummary(model=fit)
 ##### Returns
 
    None
-   
-   
+
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+     def MRL(sample, alpha=0.05):
+    
+    #Defining the threshold array and its step
+    step = np.quantile(sample.iloc[:,1], .995)/60
+    threshold = np.arange(0, max(sample.iloc[:,1]), step=step) 
+    z_inverse = stats.norm.ppf(1-(alpha/2))
+
+    #Initialization of arrays
+    mrl_array = [] 
+    CImrl = [] 
+
+    #First Loop for getting the mean residual life for each threshold value and the 
+    #second one getting the confidence intervals for the plot
+    for u in threshold:
+        excess = []
+        for data in sample.iloc[:,1]:
+            if data > u:
+                excess.append(data - u) 
+        mrl_array.append(np.mean(excess)) #
+        std_loop = np.std(excess) 
+        CImrl.append(z_inverse*std_loop/(len(excess)**0.5)) 
+
+    CI_Low = [] 
+    CI_High = [] 
+
+    #Loop to add in the confidence interval to the plot arrays
+    for i in range(0, len(mrl_array)):
+        CI_Low.append(mrl_array[i] - CImrl[i])
+        CI_High.append(mrl_array[i] + CImrl[i])
+
+    #Plot MRL
+    plt.figure(figsize=(7,7))
+    sns.lineplot(x = threshold, y = mrl_array)
+    plt.fill_between(threshold, CI_Low, CI_High, alpha = 0.4)
+    plt.xlabel('Threshold')
+    plt.ylabel('Mean Excesses')
+    plt.title('Mean Residual Life Plot')
+    plt.show()
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Mean Residual Life plot for finding appropriate threshold 
+#value for Peak-Over-Threshold method.
+ely.MRL(sample=data,alpha=0.05)
+```
+
+#### Output
+
+![MeanResidualLifePlot](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/mrl.png)
+
+  
 ### 2. _getPOT(sample, threshold)_ <a name="getPOT"></a>
 
    In Peak-Over-Threshold method the values greater than a given threshold are taken as extreme values.
