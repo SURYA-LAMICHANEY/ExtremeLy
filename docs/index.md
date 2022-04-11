@@ -79,7 +79,7 @@ distributed random variables. It is specified by three parameters : location, sh
  
 <details>
 <summary>Expand for source code</summary>
-  <code>
+  ```
          def getBM(sample,period): <br/>  
             #Obtain the maximas  <br/>  
             colname=list(sample)  <br/>  
@@ -99,7 +99,7 @@ distributed random variables. It is specified by three parameters : location, sh
            plt.show()  <br/>  
            #Return the maximas  <br/>  
            return maxima_reset  <br/>  
- </code>
+ ```
 </details>
   
 #### Example
