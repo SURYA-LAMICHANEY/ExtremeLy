@@ -77,54 +77,35 @@ distributed random variables. It is specified by three parameters : location, sh
     
    _maxima_reset_ : pandas dataframe <br/>
  
-.Expand source code
-[%collapsible]
-====
-This content is revealed when the "Toggle Me" label is clicked.
-def getBM(sample,period):
-    &#34;&#34;&#34;
-    In Block Maxima method we divide the whole dataset into blocks and select the largest value in each
-    block as an extreme value.
-
-   Parameters
-    ----------
-    sample : pandas dataframe 
-        The whole dataset
-    period : string
-        The time period on basis of which the blocks are created. Eg - yearly, monthly, weekly and daily.
-
-   Returns
-    -------
-    maxima_reset : pandas dataframe
-        Maxima values obtained
-
+<details>
+<summary>Expand for source code</summary>
+  
+      def getBM(sample,period):   
+        #Obtain the maximas
+        colname=list(sample)
+        sample.iloc[:,0]= pd.to_datetime(sample.iloc[:,0])
+        maxima = sample.resample(period, on=colname[0]).max()
+        maxima_reset=maxima.reset_index(drop=True)
+        series=pd.Series(sample.iloc[:,1])
+        series.index.name=&#34;index&#34;
+        dataset = Dataset(series)
+        N_SAMPLES_PER_BLOCK = round(len(sample)/len(maxima_reset))
+        block_maxima = BlockMaxima(dataset, N_SAMPLES_PER_BLOCK)
     
+       #Plot the maximas
+       fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+       block_maxima.plot_block_maxima(ax1)
+       block_maxima.plot_block_maxima_boxplot(ax2)
+       fig.tight_layout()
+       plt.show()
     
-   #Obtain the maximas
-    colname=list(sample)
-    sample.iloc[:,0]= pd.to_datetime(sample.iloc[:,0])
-    maxima = sample.resample(period, on=colname[0]).max()
-    maxima_reset=maxima.reset_index(drop=True)
-    series=pd.Series(sample.iloc[:,1])
-    series.index.name=&#34;index&#34;
-    dataset = Dataset(series)
-    N_SAMPLES_PER_BLOCK = round(len(sample)/len(maxima_reset))
-    block_maxima = BlockMaxima(dataset, N_SAMPLES_PER_BLOCK)
-    
-   #Plot the maximas
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
-    block_maxima.plot_block_maxima(ax1)
-    block_maxima.plot_block_maxima_boxplot(ax2)
-    fig.tight_layout()
-    plt.show()
-    
-   #Return the maximas
-    return maxima_reset
- ====
+     #Return the maximas
+      return maxima_reset
+</details>
   
 #### Example
 
-      # Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
+      #Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
       maxima=ely.getBM(sample=data,period="Y") 
       maxima
       
