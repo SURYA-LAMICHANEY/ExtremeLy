@@ -83,6 +83,7 @@ distributed random variables. It is specified by three parameters : location, sh
       maxima=ely.getBM(sample=data,period="Y") 
       maxima
       
+#### Output      
        	Date 	Loss
     0 	1980-12-31 	263.250366
     1 	1981-12-31 	56.225426
@@ -96,7 +97,7 @@ distributed random variables. It is specified by three parameters : location, sh
     9 	1989-12-31 	152.413209
     10 	1990-12-31 	144.657591
 
-![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
+   ![BlockMaxima](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/blockMaxima.png)
 
 
 ### 2.  _gevfit(sample, fit_method='mle', ci=0, ci_method='delta')_ <a name="gevFit"></a>
