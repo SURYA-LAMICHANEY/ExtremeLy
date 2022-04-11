@@ -110,6 +110,7 @@ distributed random variables. It is specified by three parameters : location, sh
 #### Example
    
 ```python
+   from ExtremeLy import extremely as ely
    #Here Y means Yearly, we can pass M for monthly, W for weekly and D for daily.
    maxima=ely.getBM(sample=data,period="Y") 
    maxima
