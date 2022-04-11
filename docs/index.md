@@ -76,10 +76,9 @@ distributed random variables. It is specified by three parameters : location, sh
    _maxima_reset_ : pandas dataframe <br/>
 
 <details><summary>Expand for source code</summary>
-<p>
-
-```python
-   def getBM(sample,period): 
+{% highlight python %}
+ 
+    def getBM(sample,period): 
  
        #Obtain the maximas   
         colname=list(sample)   
@@ -101,9 +100,7 @@ distributed random variables. It is specified by three parameters : location, sh
  
         #Return the maximas   
         return maxima_reset 
-```
-
-</p>
+{% endhighlight %}
 </details>
 
 #### Example
