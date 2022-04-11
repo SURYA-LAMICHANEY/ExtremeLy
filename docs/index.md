@@ -151,7 +151,23 @@ distributed random variables. It is specified by three parameters : location, sh
 
    model : object <br/>
            Object containing the information about GEV fit. 
-        
+
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+ 
+     #Using classic model of skextreme for GEV fitting
+     model = sk.models.classic.GEV(sample.iloc[:,1], fit_method = fit_method, ci = ci,ci_method=ci_method)
+     return model
+{% endhighlight %}
+</details>
+
+#### Example
+
+```python
+#Fitting the GEV distribution with maxima values. 
+#Here, default fit_method is MLE and default Confidence interval method is delta.
+fit=ely.gevfit(sample=maxima,fit_method="mle",ci=0,ci_method="delta")
+```
 
 ### 3. _gevparams(model)_ <a name="gevParams"></a>
 
@@ -167,7 +183,27 @@ distributed random variables. It is specified by three parameters : location, sh
    _OrderedDict_ <br/>
    Returns estimated distribution parameters. 
   
-  
+<details><summary> <strong>Expand for source code</strong> </summary>
+{% highlight python %}
+     #Return the estimated parameters
+     return model.params
+{% endhighlight %}
+</details>
+
+#### Example 
+
+```python
+#Getting estimated distribution parameters for GEV fit.
+params=ely.gevparams(model=fit)
+params
+```
+#### Output
+
+    OrderedDict([('shape', -0.6384049125307144),
+             ('location', 37.79353853187126),
+             ('scale', 28.93607752286071)])
+             
+
 ### 4. _gevsummary(model)_ <a name="gevSummary"></a>
 
    Plotting plots like QQplot, PPplot, Return Level plot and density plot for the GEV model.
