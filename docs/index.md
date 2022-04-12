@@ -578,7 +578,7 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
 
 ```python
 #Cumulative Density Function plot.
-ely.gpdcdf(sample=data,threshold=10,alpha=0.05)
+ely.gpdcdf(sample=data,threshold=30,alpha=0.05)
 ```
 
 #### Output
