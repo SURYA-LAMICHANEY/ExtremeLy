@@ -1,5 +1,3 @@
-
-
 # Table of contents
 
  1. [Introduction](#introduction)
@@ -12,9 +10,6 @@
    
  5. [Python notebook with examples](#notebook)
   
- 7. [Discussion](#discussion)
-
-         
 
 ## Introduction <a name="introduction"></a>
 
@@ -44,3 +39,5 @@ ExtremeLy provides all the necessary functionalities for performing Extreme Valu
    2. Fitting the extracted extreme values to the continuous distributions like Generalized Extreme Value (GEV) Distributions or Generalized Pareto Distribution (GPD).
    3. Using visual plots for extreme values, results and goodness-of-fit statistics of the fitted model.
    4. Estimating the extreme values of given probability and corresponding confidence interval.
+
+## Python [Notebook](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/Examples.ipynb) with examples. <a name="notebook"></a>
