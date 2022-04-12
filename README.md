@@ -30,4 +30,4 @@ The three already existing packages that are used here are:
  ## Installation
      pip install ExtremeLy
  
- ### Please refer to this [notebook](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/Examples.ipynb) for examples.
+ ## Click [here](https://surya-lamichaney.github.io/ExtremeLy/) for the Documentation and [here](https://github.com/SURYA-LAMICHANEY/ExtremeLy/blob/main/Examples.ipynb) for example notebook.
