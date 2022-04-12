@@ -5,7 +5,7 @@
 
  2. [Features](#features)
 
- 3. [Generalized Extreme Value (GEV) Distribution](gev.md)
+ 3. [Generalized Extreme Value (GEV) Distribution](gev.md){:target="_blank"}
      1. [getBM](#getBM)
      2. [gevFit](#gevFit)
      3. [gevParams](#gevParams)
