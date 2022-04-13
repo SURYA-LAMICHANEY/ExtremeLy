@@ -10,4 +10,4 @@ from . extremely import gpdpdf
 from . extremely import gpdcdf
 from . extremely import gpdqqplot
 from . extremely import gpdppplot
-from . extremely import survival_function
+from . extremely import survivalFunction
