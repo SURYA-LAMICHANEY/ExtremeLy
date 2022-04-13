@@ -235,7 +235,7 @@ def gpdfit(sample, threshold):
     shape_estimate, scale_estimate= mle.estimate()
     shape=getattr(shape_estimate, 'estimate')
     scale=getattr(scale_estimate, 'estimate') 
-    return(shape, scale,sample, sample_excess, sample_over_thresh,mle)
+    return(shape, scale,sample, sample_excess, sample_over_thresh)
 
 #Get estimated distribution parameters for GPD fit.
 def gpdparams(fit):
@@ -278,10 +278,9 @@ def gpdpdf(sample, threshold, bin_method, alpha):
 
     Returns
     -------
-    Probability Density Function plot.
-
+    None
     """
-    [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold) 
+    [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold) 
     x_points = np.arange(0, max(sample), 0.001) 
     pdf = stats.genpareto.pdf(x_points, shape, loc=0, scale=scale) 
 
@@ -313,10 +312,9 @@ def gpdcdf(sample, threshold, alpha):
 
     Returns
     -------
-    Cumulative Distribution Function plot.
-
+    None
     """
-    [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold)
+    [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold)
     n = len(sample_over_thresh)
     y = np.arange(1,n+1)/n 
 
@@ -359,17 +357,62 @@ def gpdqqplot(mle):
 
     Parameters
     ----------
-    mle : Object
-        MLE estimator object from evt library.
+    sample : pandas dataframe
+        The whole Dataset
+    threshold : integer
+        An integer value above which the values are taken as extreme values.
+     alpha : float
+         a number giving 1-alpha confidence levels to use. Default value is 0.05.
 
     Returns
     -------
-    Quantile-Quantile plot.
+    None.
 
     """
-    fig, ax = plt.subplots()
-    mle.plot_qq_gpd(ax)
-    fig.tight_layout()
+    [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold) #fit data   
+    i_initial = 0
+    p = []
+    n = len(sample)
+    sample = np.sort(sample)
+    for i in range(0, n):
+        if sample[i] > threshold + 0.0001:
+            i_initial = i #get the index of the first observation over the threshold
+            k = i - 1
+            break
+
+    for i in range(i_initial, n):
+        p.append((i - 0.35)/(n)) #using the index, compute the empirical probabilities by the Hosking Plotting Poistion Estimator.
+
+    p0 = (k - 0.35)/(n)    
+
+    quantiles = []
+    for pth in p:
+       quantiles.append(threshold + ((scale/shape)*(((1-((pth-p0)/(1-p0)))**-shape) - 1))) #getting theorecial quantiles arrays
+
+    n = len(sample_over_thresh)
+    y = np.arange(1,n+1)/n #getting empirical quantiles
+
+    #Kolmogorov-Smirnov Test for getting the confidence interval
+    K = (-0.5*mt.log(alpha/2))**0.5
+    M = (len(p)**2/(2*len(p)))**0.5
+    CI_qq_high = []
+    CI_qq_low = []
+    for prob in y:
+        F1 = prob - K/M
+        F2 = prob + K/M
+        CI_qq_low.append(threshold + ((scale/shape)*(((1-((F1)/(1)))**-shape) - 1)))
+        CI_qq_high.append(threshold + ((scale/shape)*(((1-((F2)/(1)))**-shape) - 1)))
+
+    #Plotting QQ
+    plt.figure(figsize=(7,7))
+    sns.regplot(quantiles, sample_over_thresh, ci = None, line_kws={'color':'black','label':'Regression Line'})
+    plt.axis('square')
+    plt.plot(sample_over_thresh, CI_qq_low, linestyle='--', color='red', alpha = 0.5, lw = 0.8, label = 'Kolmogorov-Smirnov Confidence Bands')
+    plt.legend()
+    plt.plot(sample_over_thresh, CI_qq_high, linestyle='--', color='red', alpha = 0.5, lw = 0.8)
+    plt.xlabel('Theoretical GPD Quantiles')
+    plt.ylabel('Sample Quantiles')
+    plt.title('Q-Q Plot')
     plt.show()
     
 #probability-probability plot to diagnostic the model
@@ -389,10 +432,9 @@ def gpdppplot(sample, threshold, alpha):
 
     Returns
     -------
-    Probability-Probability plot.
-
+    None
     """
-    [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold) 
+    [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold) 
     n = len(sample_over_thresh)
     y = np.arange(1,n+1)/n  
     cdf_pp = stats.genpareto.cdf(sample_over_thresh, shape, loc=threshold, scale=scale)
@@ -440,10 +482,10 @@ def survival_function(sample, threshold, alpha):
 
     Returns
     -------
-    Survival function
+    None
 
     """
-    [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold)
+    [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold)
 
     n = len(sample_over_thresh)
     y_surv = 1 - np.arange(1,n+1)/n
