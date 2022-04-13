@@ -13,7 +13,7 @@ Generalized Pareto Distribution (GPD) is a family of of continuos probability di
   6. [gpdcdf](#gpdcdf)
   7. [gpdqqplot](#gpdqqplot)
   8. [gpdppplot](#gpdppplot)
-  9. [survival_function](#survival_function)
+  9. [survivalFunction](#survival_function)
 
 
 ### 1. _MRL(sample, alpha=0.05)_  <a name="MRL"></a>
@@ -261,7 +261,7 @@ ely.gpdparams(fit=gpdfit)
  
      #get PDF plot with histogram to diagnostic the model
      def gpdpdf(sample, threshold, bin_method, alpha):
-         [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold) 
+         [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold) 
          x_points = np.arange(0, max(sample), 0.001) 
          pdf = stats.genpareto.pdf(x_points, shape, loc=0, scale=scale) 
 
@@ -312,7 +312,7 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
  
     #plot gpd cdf with empirical points
     def gpdcdf(sample, threshold, alpha): 
-        [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold)
+        [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold)
         n = len(sample_over_thresh)
         y = np.arange(1,n+1)/n 
 
@@ -360,13 +360,20 @@ ely.gpdcdf(sample=data,threshold=30,alpha=0.05)
 ![GPD-CDF](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdcdf.png)
 
 
-### 7. _gpdqqplot(mle)_ <a name="gpdqqplot"></a>
+### 7. _gpdqqplot(sample,threshold,alpha)_ <a name="gpdqqplot"></a>
 
    QQplot is a graphical technique for determining if two datasets come from populations with a common distribution. A 45 degree reference line is plotted, if the two sets come from populations with the same distribution, the points should fall approximately along this reference line. <br/>
 ##### Parameters
 
-   _mle_ : object <br/>
-           MLE estimator object from evt library.
+   _sample_ : pandas dataframe<br/>
+              The whole Dataset
+              
+   _threshold_ : integer <br/>
+                 An integer value above which the values are taken as extreme values.
+
+   _alpha_ : float <br/>
+           a number giving 1-alpha confidence levels to use. Default value is 0.05.
+           
 
 ##### Returns
 
@@ -376,10 +383,52 @@ ely.gpdcdf(sample=data,threshold=30,alpha=0.05)
 {% highlight python %}
  
     #Plot QQplot with empirical points.
-    def gpdqqplot(mle): 
-        fig, ax = plt.subplots()
-        mle.plot_qq_gpd(ax)
-        fig.tight_layout()
+    def gpdqqplot(sample, threshold, alpha): 
+  
+        [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold) #fit data   
+        i_initial = 0
+        p = []
+        n = len(sample)
+        sample = np.sort(sample)
+        for i in range(0, n):
+            if sample[i] > threshold + 0.0001:
+                i_initial = i #get the index of the first observation over the threshold
+                k = i - 1
+                break
+
+        for i in range(i_initial, n):
+             p.append((i - 0.35)/(n)) #using the index, compute the empirical probabilities by the Hosking Plotting Poistion Estimator.
+
+        p0 = (k - 0.35)/(n)    
+
+        quantiles = []
+        for pth in p:
+           quantiles.append(threshold + ((scale/shape)*(((1-((pth-p0)/(1-p0)))**-shape) - 1))) #getting theorecial quantiles arrays
+
+        n = len(sample_over_thresh)
+        y = np.arange(1,n+1)/n #getting empirical quantiles
+
+        #Kolmogorov-Smirnov Test for getting the confidence interval
+        K = (-0.5*mt.log(alpha/2))**0.5
+        M = (len(p)**2/(2*len(p)))**0.5
+        CI_qq_high = []
+        CI_qq_low = []
+        for prob in y:
+            F1 = prob - K/M
+            F2 = prob + K/M
+            CI_qq_low.append(threshold + ((scale/shape)*(((1-((F1)/(1)))**-shape) - 1)))
+            CI_qq_high.append(threshold + ((scale/shape)*(((1-((F2)/(1)))**-shape) - 1)))
+
+        #Plotting QQ
+        plt.figure(figsize=(7,7))
+        sns.regplot(quantiles, sample_over_thresh, ci = None, line_kws={'color':'black','label':'Regression Line'})
+        plt.axis('square')
+        plt.plot(sample_over_thresh, CI_qq_low, linestyle='--', color='red', alpha = 0.5, lw = 0.8, label = 'Kolmogorov-Smirnov Confidence Bands')
+        plt.legend()
+        plt.plot(sample_over_thresh, CI_qq_high, linestyle='--', color='red', alpha = 0.5, lw = 0.8)
+        plt.xlabel('Theoretical GPD Quantiles')
+        plt.ylabel('Sample Quantiles')
+        plt.title('Q-Q Plot')
         plt.show()
 {% endhighlight %}
 </details>
@@ -388,7 +437,7 @@ ely.gpdcdf(sample=data,threshold=30,alpha=0.05)
 
 ```python
 #Quantile-Quantile plot.
-ely.gpdqqplot(gpdfit[5])
+ely.gpdqqplot(sample=data,threshold=10,alpha=0.5)
 ```
 
 #### Output
@@ -419,7 +468,7 @@ ely.gpdqqplot(gpdfit[5])
  
     #probability-probability plot to diagnostic the model
     def gpdppplot(sample, threshold, alpha): 
-        [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold) 
+        [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold) 
         n = len(sample_over_thresh)
         y = np.arange(1,n+1)/n  
         cdf_pp = stats.genpareto.cdf(sample_over_thresh, shape, loc=threshold, scale=scale)
@@ -483,8 +532,8 @@ None
 {% highlight python %}
  
     #Plot the survival function, (1 - cdf)
-    def survival_function(sample, threshold, alpha): 
-        [shape, scale, sample, sample_excess, sample_over_thresh,mle] = gpdfit(sample, threshold)
+    def survivalFunction(sample, threshold, alpha): 
+        [shape, scale, sample, sample_excess, sample_over_thresh] = gpdfit(sample, threshold)
 
         n = len(sample_over_thresh)
         y_surv = 1 - np.arange(1,n+1)/n
@@ -525,7 +574,7 @@ None
 
 ```python
 #Survival Function
-ely.survival_function(sample=data,threshold=30,alpha=0.05)
+ely.survivalFunction(sample=data,threshold=30,alpha=0.05)
 ```
 
 #### Output
