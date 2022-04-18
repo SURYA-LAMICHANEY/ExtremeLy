@@ -510,7 +510,7 @@ ely.gpdppplot(sample=data,threshold=30,alpha=0.5)
 
 ![GPD-PPplot](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/gpdppplot.png)
 
-### 9. _survival_function(sample, threshold, alpha)_ <a name="survival_function"></a>
+### 9. _survivalFunction(sample, threshold, alpha)_ <a name="survival_function"></a>
 
    The survival function is a function that gives the probability that the object of interest will survive past a certain time. <br/>
 ##### Parameters
