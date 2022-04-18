@@ -126,30 +126,29 @@ ely.MRL(sample=data,alpha=0.05)
 
  ```python
 #Getting large claims using POT method using threshold value as 30.
-pot=ely.getPOT(sample=data,threshold=30)
+pot=ely.getPOT(sample=data,threshold=10)
 pot
 ``` 
 
 #### Output
           	
-    index 	  Date         	Loss
-      82  	1980-07-15 	263.250366
-      178   1981-02-10 	34.141547
-      232 	1981-05-29 	56.225426
-      330 	1981-12-21 	50.065531
-      478 	1982-10-24 	65.707491
-      887 	1985-03-04 	46.500000
-      972 	1985-08-23 	57.410636
-      1388 	1987-06-05 	32.467532
-      1549 	1988-03-25 	38.154392
-      1641 	1988-08-12 	47.019521
-      1710 	1988-12-17 	31.055901
-      1740 	1989-02-14 	42.091448
-      1856 	1989-08-04 	152.413209
-      1909 	1989-10-22 	32.387807
-      2121 	1990-10-08 	144.657591
+            Date     Loss
+    index 		
+    15 	1980-01-26 	11.374817
+    17 	1980-01-28 	26.214641
+    22 	1980-02-13 	14.122076
+    24 	1980-02-19 	11.713031
+    28 	1980-02-23 	12.465593
+    ... 	... 	...
+    2105 	1990-09-08 	14.851485
+    2121 	1990-10-08 	144.657591
+    2122 	1990-10-10 	28.630363
+    2123 	1990-10-12 	19.265677
+    2150 	1990-12-10 	17.739274
+
+    109 rows × 2 columns
       
-![Peak-over-threshold](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/pot.png)
+![Peak-over-threshold](https://raw.githubusercontent.com/surya-lamichaney/ExtremeLy/master/assets/pot2.png)
 
 
 ### 3. _gpdfit(sample, threshold)_ <a name="gpdfit"></a>
@@ -197,7 +196,7 @@ pot
 
 ```python
 #Fitting GPD with large claims obtained using POT method.
-gpdfit=ely.gpdfit(sample=data,threshold=30)
+gpdfit=ely.gpdfit(sample=data,threshold=10)
 ```
         
 ### 4. _gpdparams(fit)_ <a name="gpdparams"></a>
@@ -233,8 +232,8 @@ ely.gpdparams(fit=gpdfit)
 
 #### Output
 
-    Shape: 0.6586260117024005
-    Scale: 19.267021192664032
+    Shape: 0.49697630118112623
+    Scale: 6.9754506314014675
     
 ### 5. _gpdpdf(sample, threshold, bin_method, alpha)_ <a name="gpdpdf"></a>
 
@@ -282,7 +281,7 @@ ely.gpdparams(fit=gpdfit)
 
 ```python
 #Data Probability Density Function plot.
-ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
+ely.gpdpdf(sample=data,threshold=10,bin_method="sturges",alpha=0.05)
 ```
 
 #### Output
@@ -352,7 +351,7 @@ ely.gpdpdf(sample=data,threshold=30,bin_method="sturges",alpha=0.05)
 
 ```python
 #Cumulative Density Function plot.
-ely.gpdcdf(sample=data,threshold=30,alpha=0.05)
+ely.gpdcdf(sample=data,threshold=10,alpha=0.05)
 ```
 
 #### Output
@@ -504,7 +503,7 @@ ely.gpdqqplot(sample=data,threshold=10,alpha=0.5)
 
 ```python
 #Probability-Probaility plot.
-ely.gpdppplot(sample=data,threshold=30,alpha=0.5)
+ely.gpdppplot(sample=data,threshold=10,alpha=0.5)
 ```
 #### Output
 
@@ -574,7 +573,7 @@ None
 
 ```python
 #Survival Function
-ely.survivalFunction(sample=data,threshold=30,alpha=0.05)
+ely.survivalFunction(sample=data,threshold=10,alpha=0.05)
 ```
 
 #### Output
